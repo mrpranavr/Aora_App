@@ -1,14 +1,61 @@
 import { StatusBar } from 'expo-status-bar';
-import { Text, View } from 'react-native';
-import {Link} from 'expo-router'
+import { Image, ScrollView, Text, View } from 'react-native';
+import {Redirect, router} from 'expo-router'
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { images } from '../constants';
+import CustomButton from '../components/customButton';
 
 export default function App() {
   return (
-    <View className='flex-1 items-center justify-center bg-white'>
-      <Text className='font-pblack '>Aora</Text>
-      <Link href='/home'>Go to Home</Link>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaView className='bg-primary h-full'>
+      <ScrollView 
+        contentContainerStyle={{
+          height: '100%'
+        }}
+      >
+        <View className='w-full h-full items-center justify-center px-4 '>
+          <Image 
+            source={images.logo}
+            className='h-[84px] w-[134px]'
+            resizeMode='contain'
+          />
+
+          <Image 
+            source={images.cards}
+            className='w-full h-[300px] max-w-[380px]'
+            resizeMode='contain'
+          />
+
+          <View className='relative mt-5'>
+            <Text className='text-white font-bold text-center text-3xl'>
+              Discover Endless Possibility With
+              <Text className='text-secondary-200'>
+                {' '}Aora
+              </Text>
+            </Text>
+
+            <Image 
+              source={images.path}
+              className='w-[136px] h-[15px] absolute -bottom-2 -right-8'
+              resizeMode='contain'
+            />
+          </View>
+
+          <Text className='text-sm font-pregular text-gray-100 mt-7 text-center'>
+            Where creativity meets innovation : 
+            embark on a journey with limitless exploration with Aora
+          </Text>
+
+          <CustomButton 
+            title='Continue with Email'
+            handlePress={() => router.push('/signIn')}
+            containerStyles='w-full mt-7'
+          /> 
+        </View>
+      </ScrollView>
+
+      <StatusBar style='light' backgroundColor='#161622'/>
+    </SafeAreaView>
   );
 }
 
