@@ -15,6 +15,8 @@ const Home = () => {
   const { data: latestPosts } = useAppwrite(getLatestPosts)
   const [refreshing, setRefreshing] = useState(false)
 
+  // console.log('posts here --> ', posts)
+
   const {user} = useGlobalContext()
 
   const onRefresh = async () => {
@@ -53,7 +55,7 @@ const Home = () => {
 
             <View className='w-full flex-1 pt-5 pb-8'>
               <Text className='text-gray-100 font-pregular mb-3 text-lg'>
-                Trending Videos
+                Latest Videos
               </Text>
 
               <Trending 
